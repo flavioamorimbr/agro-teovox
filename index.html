@@ -1,38 +1,910 @@
-Este é o codigo do site atual:
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Teovox Agro — Marketing Estratégico para Agronegócio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --verde-escuro:#16321f;
+    --verde:#2f5233;
+    --verde-claro:#4a7a3f;
+    --dourado:#c99a3f;
+    --dourado-claro:#e8c77a;
+    --creme:#f0f0f0;
+    --branco:#ffffff;
+    --texto:#2a2a24;
+    --texto-claro:#5c5c52;
+    --max-width:1100px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  body{
+    font-family:'Roboto', sans-serif;
+    font-weight:400;
+    color:var(--texto);
+    background:var(--creme);
+    line-height:1.6;
+  }
+  img{max-width:100%;display:block;}
+  a{text-decoration:none;color:inherit;}
+  .wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px;}
+  section{padding:80px 0;}
+  h1,h2,h3{line-height:1.25;color:var(--verde-escuro);font-weight:700;}
+  h1{font-size:2.6rem;}
+  h2{font-size:2rem;margin-bottom:20px;}
+  h3{font-size:1.2rem;}
+  p{margin-bottom:16px;color:var(--texto-claro);font-weight:400;}
+  .sub, .intro p, p.center{font-weight:500;}
+  .btn{
+    display:inline-block;
+    background:var(--dourado);
+    color:var(--verde-escuro);
+    font-weight:700;
+    padding:16px 32px;
+    border-radius:6px;
+    font-size:1.05rem;
+    transition:background .2s, transform .2s;
+    border:none;
+    cursor:pointer;
+  }
+  .btn:hover{background:var(--dourado-claro);transform:translateY(-2px);}
+  .btn-outline{
+    display:inline-block;
+    border:2px solid var(--branco);
+    color:var(--branco);
+    padding:12px 28px;
+    border-radius:6px;
+    font-weight:600;
+  }
+  .center{text-align:center;}
 
+  /* HERO */
+  .hero{
+    position:relative;
+    z-index:1;
+    overflow:hidden;
+    color:var(--branco);
+    padding:0 0 80px;
+  }
+  .hero-bg{
+    position:absolute;
+    top:-30%;left:0;right:0;
+    height:160%;
+    background:
+      linear-gradient(100deg, rgba(10,20,12,.55) 0%, rgba(10,20,12,.25) 45%, rgba(10,20,12,0) 70%),
+      url('IMAGENS/slider-01d.png') center/cover no-repeat;
+    z-index:-1;
+    will-change:transform;
+  }
 
+  /* CABEÇALHO DO SITE */
+  .site-header{position:relative;z-index:2;}
+  .site-header-inner{
+    max-width:1300px;margin:0 auto;padding:24px;
+    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;
+  }
+  .site-logo img{height:30px;display:block;}
+  .site-nav{display:flex;gap:44px;}
+  .site-nav a{
+    position:relative;
+    color:var(--branco);
+    font-size:.95rem;
+    font-weight:300;
+    padding-bottom:10px;
+  }
+  .site-nav a::after{
+    content:"";
+    position:absolute;
+    left:0;bottom:0;
+    width:100%;height:3px;
+    border-radius:2px;
+    background:#c0d73e;
+    opacity:0;
+    transform:translateY(8px);
+    transition:opacity .25s ease, transform .25s ease;
+  }
+  .site-nav a:hover::after{opacity:1;transform:translateY(0);}
+  .whatsapp-btn{
+    display:inline-flex;align-items:center;gap:8px;
+    background:#25D366;color:var(--branco);
+    padding:10px 18px;border-radius:30px;
+    font-size:.85rem;font-weight:700;white-space:nowrap;
+  }
+  .whatsapp-btn svg{width:18px;height:18px;fill:var(--branco);}
+  .whatsapp-btn:hover{background:#1fb958;}
+  @media(max-width:700px){
+    .site-nav{display:none;}
+  }
+  .plus-field{
+    position:absolute;
+    inset:0;
+    z-index:0;
+    pointer-events:none;
+  }
+  .plus-field .plus{
+    position:absolute;
+    color:rgba(255,255,255,.6);
+    font-size:1.8rem;
+    font-weight:400;
+    line-height:1;
+    transition:transform .5s ease-out;
+    will-change:transform;
+  }
+  .hero .plus-field .plus{
+    width:42px;height:42px;
+    display:flex;align-items:center;justify-content:center;
+    opacity:.2;
+  }
+  .hero .plus-field .plus svg{
+    width:28px;height:28px;
+    fill:none;
+    stroke:var(--verde);
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+  .hero .btn.hero-btn{background:#c0d73e;}
+  .hero .btn.hero-btn:hover{background:#cfe266;}
+  .hero .wrap{position:relative;z-index:1;max-width:1300px;text-align:left;margin-top:36px;}
 
-<!DOCTYPE html><html lang="pt-BR"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Teovox Agro — Marketing Estratégico para Agronegócio</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet"><style>  :root{    --verde-escuro:#16321f;    --verde:#2f5233;    --verde-claro:#4a7a3f;    --dourado:#c99a3f;    --dourado-claro:#e8c77a;    --creme:#f0f0f0;    --branco:#ffffff;    --texto:#2a2a24;    --texto-claro:#5c5c52;    --max-width:1100px;  }  *{margin:0;padding:0;box-sizing:border-box;}  body{    font-family:'Roboto', sans-serif;    font-weight:400;    color:var(--texto);    background:var(--creme);    line-height:1.6;  }  img{max-width:100%;display:block;}  a{text-decoration:none;color:inherit;}  .wrap{max-width:var(--max-width);margin:0 auto;padding:0 24px;}  section{padding:80px 0;}  h1,h2,h3{line-height:1.25;color:var(--verde-escuro);font-weight:700;}  h1{font-size:2.6rem;}  h2{font-size:2rem;margin-bottom:20px;}  h3{font-size:1.2rem;}  p{margin-bottom:16px;color:var(--texto-claro);font-weight:400;}  .sub, .intro p, p.center{font-weight:500;}  .btn{    display:inline-block;    background:var(--dourado);    color:var(--verde-escuro);    font-weight:700;    padding:16px 32px;    border-radius:6px;    font-size:1.05rem;    transition:background .2s, transform .2s;    border:none;    cursor:pointer;  }  .btn:hover{background:var(--dourado-claro);transform:translateY(-2px);}  .btn-outline{    display:inline-block;    border:2px solid var(--branco);    color:var(--branco);    padding:12px 28px;    border-radius:6px;    font-weight:600;  }  .center{text-align:center;}
-  /* HERO */  .hero{    position:relative;    z-index:1;    overflow:hidden;    color:var(--branco);    padding:0 0 80px;  }  .hero-bg{    position:absolute;    top:-30%;left:0;right:0;    height:160%;    background:      linear-gradient(100deg, rgba(10,20,12,.55) 0%, rgba(10,20,12,.25) 45%, rgba(10,20,12,0) 70%),      url('IMAGENS/slider-01d.png') center/cover no-repeat;    z-index:-1;    will-change:transform;  }
-  /* CABEÇALHO DO SITE */  .site-header{position:relative;z-index:2;}  .site-header-inner{    max-width:1300px;margin:0 auto;padding:24px;    display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;  }  .site-logo img{height:30px;display:block;}  .site-nav{display:flex;gap:44px;}  .site-nav a{    position:relative;    color:var(--branco);    font-size:.95rem;    font-weight:300;    padding-bottom:10px;  }  .site-nav a::after{    content:"";    position:absolute;    left:0;bottom:0;    width:100%;height:3px;    border-radius:2px;    background:#c0d73e;    opacity:0;    transform:translateY(8px);    transition:opacity .25s ease, transform .25s ease;  }  .site-nav a:hover::after{opacity:1;transform:translateY(0);}  .whatsapp-btn{    display:inline-flex;align-items:center;gap:8px;    background:#25D366;color:var(--branco);    padding:10px 18px;border-radius:30px;    font-size:.85rem;font-weight:700;white-space:nowrap;  }  .whatsapp-btn svg{width:18px;height:18px;fill:var(--branco);}  .whatsapp-btn:hover{background:#1fb958;}  @media(max-width:700px){    .site-nav{display:none;}  }  .plus-field{    position:absolute;    inset:0;    z-index:0;    pointer-events:none;  }  .plus-field .plus{    position:absolute;    color:rgba(255,255,255,.6);    font-size:1.8rem;    font-weight:400;    line-height:1;    transition:transform .5s ease-out;    will-change:transform;  }  .hero .plus-field .plus{    width:42px;height:42px;    display:flex;align-items:center;justify-content:center;    opacity:.2;  }  .hero .plus-field .plus svg{    width:28px;height:28px;    fill:none;    stroke:var(--verde);    stroke-width:1.8;    stroke-linecap:round;    stroke-linejoin:round;  }  .hero .btn.hero-btn{background:#c0d73e;}  .hero .btn.hero-btn:hover{background:#cfe266;}  .hero .wrap{position:relative;z-index:1;max-width:1300px;text-align:left;margin-top:36px;}
-  @keyframes heroEnter{    from{opacity:0;transform:translateX(-40px);}    to{opacity:1;transform:translateX(0);}  }  .hero h1,  .hero .sub,  .hero ul li,  .hero .hero-btn{    animation:heroEnter 3s cubic-bezier(.16,1,.3,1) both;  }  .hero h1{animation-delay:.05s;}  .hero .sub{animation-delay:.2s;}  .hero ul li:nth-child(1){animation-delay:.35s;}  .hero ul li:nth-child(2){animation-delay:.45s;}  .hero ul li:nth-child(3){animation-delay:.55s;}  .hero .hero-btn{animation-delay:.7s;}
-  .hero h1{color:var(--branco);font-size:3.4rem;margin-bottom:14px;}  .hero .sub{color:rgba(255,255,255,.9);font-size:1.15rem;max-width:100%;margin:0 0 24px;}  .hero ul{list-style:none;text-align:left;max-width:640px;margin:0 0 36px;}  .hero li{    padding:12px 0 12px 32px;    position:relative;    color:var(--branco);    border-bottom:1px solid rgba(255,255,255,.2);  }  .hero li strong{font-weight:800;color:#c0d73e;}  .hero li small{display:block;font-weight:400;font-size:1em;font-family:inherit;}  .hero li:before{    content:"✓";    position:absolute;left:0;top:12px;    color:var(--dourado-claro);    font-weight:800;  }  /* DOR */  .dor{background:var(--branco);}  .dor .wrap{max-width:760px;text-align:center;}  .dor h2{color:var(--verde-escuro);}
-  /* CTA intermediário */  .cta-mid{    position:relative;    overflow:hidden;    background:var(--dourado);    color:var(--verde-escuro);    text-align:center;    padding:60px 0;  }  .cta-bg{    position:absolute;    top:-30%;left:0;right:0;    height:160%;    background:url('IMAGENS/slider-soja.jpg') center 70%/cover no-repeat;    opacity:.15;    z-index:0;    will-change:transform;  }  .cta-mid .wrap{position:relative;z-index:1;}  .cta-mid h2{color:var(--verde-escuro);}  .cta-mid .btn{background:var(--verde-escuro);color:var(--branco);}  .cta-mid .btn:hover{background:var(--verde);}
-  /* ÍCONE DE PAINEL (título) */  .panel-icon-badge{    width:52px;height:52px;    border-radius:50%;    background:var(--verde);    display:flex;align-items:center;justify-content:center;    margin:0 auto 14px;  }  .panel-icon-badge svg{    width:26px;height:26px;    fill:none;    stroke:var(--branco);    stroke-width:1.8;    stroke-linecap:round;    stroke-linejoin:round;  }
-  /* ANIMAÇÃO DE ENTRADA (uma única vez) */  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}  .reveal.reveal-in{opacity:1;transform:translateY(0);}
-  /* MÉTODO */  .metodo{background:var(--creme);}  .metodo .wrap{max-width:900px;}  .metodo .intro{max-width:700px;margin:0 auto 40px;text-align:center;}  .pilares{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}  .pilar{    background:var(--branco);    border-radius:6px;    padding:28px 24px;    text-align:center;    box-shadow:0 2px 10px rgba(0,0,0,.04);  }  .pilar h3{color:var(--verde);margin-bottom:8px;font-size:1.05rem;}  .pilar p{margin-bottom:0;font-size:.95rem;}  .metodo .closing{text-align:center;font-weight:600;color:var(--verde-escuro);margin-top:32px;}
-  /* PARA QUEM */  .publico{background:var(--branco);}  .publico-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}  .publico-col{padding:28px;border-radius:8px;}  .publico-col.sim{background:#eef4ea;}  .publico-col.nao{background:#f7ece9;}  .publico-col h3{margin-bottom:16px;}  .publico-col.sim h3{color:var(--verde);}  .publico-col.nao h3{color:#a5453a;}  .publico-col ul{list-style:none;}  .publico-col li{padding:8px 0;font-size:.97rem;color:var(--texto);}
-  /* ENTREGÁVEIS */  .entregaveis{position:relative;overflow:hidden;background:var(--creme);}  .entregaveis-bg{    position:absolute;    top:-30%;left:0;right:0;    height:160%;    background:url('IMAGENS/slider-colheitadeira.jpg') center/cover no-repeat;    opacity:.25;    z-index:0;    will-change:transform;  }  .entregaveis .wrap{position:relative;z-index:1;}  .entrega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:30px;}  .entrega-card{background:var(--branco);border-radius:8px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.04);}  .entrega-card h3{color:var(--verde-escuro);margin-bottom:12px;font-size:1.05rem;text-align:center;}  .entrega-card ul{list-style:none;}  .entrega-card li{    padding:6px 0 6px 22px;    position:relative;    font-size:.92rem;    color:var(--texto-claro);  }  .entrega-card li:before{content:"•";position:absolute;left:0;color:var(--dourado);font-weight:800;}
-  /* BÔNUS */  .bonus{background:var(--verde-escuro);color:var(--branco);}  .bonus .wrap{max-width:760px;text-align:center;}  .bonus h2{color:var(--dourado-claro);}  .bonus p{color:#d8e4d3;}  .bonus-box{    background:rgba(255,255,255,.06);    border:1px solid rgba(255,255,255,.15);    border-radius:8px;    padding:28px;    margin-top:20px;    text-align:left;  }
-  /* STACK DE VALOR */  .stack{background:var(--branco);}  .stack .wrap{max-width:760px;}  .stack-list{list-style:none;margin:24px 0;}  .stack-list li{    display:flex;    justify-content:space-between;    padding:14px 0;    border-bottom:1px solid #e5e0d3;    font-weight:600;    color:var(--verde-escuro);  }  .stack-list span:last-child{color:var(--texto-claro);font-weight:400;}
-  /* RESULTADOS */  .resultados{background:var(--creme);}  .resultado-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px;}  .resultado-card{    background:var(--branco);    border-radius:8px;    padding:26px;    text-align:center;    box-shadow:0 2px 10px rgba(0,0,0,.04);  }  .resultado-card h3{color:var(--dourado);font-size:1.1rem;margin-bottom:10px;}  .resultado-card p{font-size:.92rem;margin-bottom:0;}
-  /* SUPORTE */  .suporte{background:var(--branco);}  .suporte .wrap{max-width:760px;}  .suporte ul{list-style:none;margin-top:20px;}  .suporte li{    padding:12px 0 12px 32px;    position:relative;    border-bottom:1px solid #ece7d8;  }  .suporte li:before{content:"→";position:absolute;left:0;color:var(--verde);font-weight:800;}  .suporte strong{color:var(--verde-escuro);}
-  /* GARANTIA */  .garantia{background:var(--verde);color:var(--branco);}  .garantia .wrap{max-width:700px;text-align:center;}  .garantia h2{color:var(--branco);}  .garantia p{color:#e4ecdf;}
-  /* AUTORIDADE */  .autoridade{background:var(--creme);}  .autoridade .wrap{max-width:900px;}  .autoridade-grid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center;text-align:left;}  .autoridade-grid img{width:100%;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);}  .autoridade-grid .autoridade-text p:last-child{margin-bottom:0;}  @media(max-width:700px){    .autoridade-grid{grid-template-columns:1fr;text-align:center;}    .autoridade-grid img{max-width:220px;margin:0 auto;}  }
-  /* FAQ */  .faq{background:var(--branco);}  .faq .wrap{max-width:760px;}  details{    border-bottom:1px solid #e5e0d3;    padding:18px 0;  }  details summary{    font-weight:700;    color:var(--verde-escuro);    cursor:pointer;    list-style:none;    position:relative;    padding-right:30px;  }  details summary::-webkit-details-marker{display:none;}  details summary:after{    content:"+";    position:absolute;right:0;top:0;    font-size:1.3rem;    color:var(--dourado);  }  details[open] summary:after{content:"–";}  details p{margin-top:12px;margin-bottom:0;}
-  /* OFERTA FINAL */  .oferta{    background:linear-gradient(160deg, var(--verde-escuro), var(--verde) 70%);    color:var(--branco);    text-align:center;  }  .oferta .wrap{max-width:780px;}  .oferta h2{color:var(--branco);}  .escolhas{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;margin:32px 0;}  .escolha{    background:rgba(255,255,255,.06);    border:1px solid rgba(255,255,255,.15);    border-radius:8px;    padding:26px 22px;    text-align:center;  }  .escolha .panel-icon-badge{background:var(--dourado);}  .escolha h3{color:var(--dourado-claro);margin-bottom:10px;font-size:1rem;}  .escolha p{color:#d8e4d3;font-size:.92rem;margin-bottom:0;text-align:left;}
-  footer{    background:var(--verde-escuro);    color:#a9b8a3;    text-align:center;    padding:32px 0;    font-size:.9rem;  }
-  /* MOUSE TRAIL */  .cursor-dot,.cursor-glow{    position:fixed;    top:0;left:0;    border-radius:50%;    pointer-events:none;    z-index:9999;    transform:translate(-50%,-50%);    will-change:transform;  }  .cursor-dot{    width:8px;height:8px;    background:var(--dourado);  }  .cursor-glow{    width:36px;height:36px;    background:radial-gradient(circle, rgba(201,154,63,.5), rgba(201,154,63,0) 70%);  }  @media (hover:none), (pointer:coarse){    .cursor-dot,.cursor-glow{display:none;}  }
-  @media(max-width:700px){    h1{font-size:2.2rem;}    h2{font-size:1.5rem;}    .publico-grid, .escolhas{grid-template-columns:1fr;}    section{padding:56px 0;}  }</style></head><body>
-<svg style="display:none" aria-hidden="true">  <symbol id="icon-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="13" y1="10" x2="18" y2="10"/><line x1="13" y1="14" x2="18" y2="14"/></symbol>  <symbol id="icon-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>  <symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>  <symbol id="icon-trending" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></symbol>  <symbol id="icon-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>  <symbol id="icon-star" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></symbol>  <symbol id="icon-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.6-3.4L23 10"/><path d="M20.5 15a9 9 0 0 1-14.6 3.4L1 14"/></symbol>  <symbol id="icon-currency" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 1.4 1.3 1.9 3 2.2s3 .9 3 2.3c0 1.3-1.3 2.2-3 2.2s-3-1-3-2.4"/></symbol>  <symbol id="icon-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/></symbol>  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></symbol>  <symbol id="icon-like" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></symbol>  <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a13.6 13.6 0 0 1 3.8 9A13.6 13.6 0 0 1 12 21a13.6 13.6 0 0 1-3.8-9A13.6 13.6 0 0 1 12 3z"/></symbol>  <symbol id="icon-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>  <symbol id="icon-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></symbol>  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>  <symbol id="icon-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>  <symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="M3 11v3a2 2 0 0 0 2 2h1l4 4V7l-4 4H5a2 2 0 0 0-2 2z"/><path d="M17 7a5 5 0 0 1 0 10"/><path d="M14 4a9 9 0 0 1 0 16"/></symbol>  <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.32A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.25-.45.07-1.02.1-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.11 1.31.26.13.41.11.56-.07.15-.18.65-.76.82-1.02.17-.26.34-.22.57-.13.23.09 1.47.69 1.72.82.25.13.42.19.48.3.06.11.06.62-.16 1.24z"/></symbol></svg>
-<!-- PAINEL 01 — HERO --><section class="hero" id="inicio">  <div class="hero-bg"></div>  <div class="plus-field">    <span class="plus" style="top:12%;left:8%;"><svg><use href="#icon-like"></use></svg></span>    <span class="plus" style="top:22%;left:88%;"><svg><use href="#icon-globe"></use></svg></span>    <span class="plus" style="top:38%;left:18%;"><svg><use href="#icon-cart"></use></svg></span>    <span class="plus" style="top:65%;left:92%;"><svg><use href="#icon-wifi"></use></svg></span>    <span class="plus" style="top:78%;left:6%;"><svg><use href="#icon-search"></use></svg></span>    <span class="plus" style="top:85%;left:50%;"><svg><use href="#icon-share"></use></svg></span>    <span class="plus" style="top:15%;left:45%;"><svg><use href="#icon-award"></use></svg></span>    <span class="plus" style="top:55%;left:78%;"><svg><use href="#icon-megaphone"></use></svg></span>    <span class="plus" style="top:5%;left:2%;"><svg><use href="#icon-like"></use></svg></span>    <span class="plus" style="top:32%;left:3%;"><svg><use href="#icon-globe"></use></svg></span>    <span class="plus" style="top:52%;left:4%;"><svg><use href="#icon-cart"></use></svg></span>    <span class="plus" style="top:92%;left:3%;"><svg><use href="#icon-wifi"></use></svg></span>    <span class="plus" style="top:8%;left:95%;"><svg><use href="#icon-search"></use></svg></span>    <span class="plus" style="top:45%;left:96%;"><svg><use href="#icon-share"></use></svg></span>    <span class="plus" style="top:72%;left:94%;"><svg><use href="#icon-award"></use></svg></span>    <span class="plus" style="top:95%;left:97%;"><svg><use href="#icon-megaphone"></use></svg></span>  </div>  <header class="site-header">    <div class="site-header-inner">      <a href="#inicio" class="site-logo"><img src="Logotipo-teovox-Agro-branca.png" alt="Teovox Agromarketing - Mato Grosso"></a>      <nav class="site-nav">        <a href="#inicio">Início</a>        <a href="#metodo">O método</a>        <a href="#entregaveis">Serviços</a>        <a href="#suporte">Suporte</a>        <a href="#sobre">Sobre nós</a>        <a href="#faq">FAQ</a>      </nav>      <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/5579996343621?text=Teovox%20Agro%20-%20Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20agromarketing%20para%20o%20meu%20neg%C3%B3cio.">        <svg><use href="#icon-whatsapp"></use></svg> Fale agora      </a>    </div>  </header>  <div class="wrap">    <h1>Sua presença digital e posicionamento estão invisíveis no mercado agro</h1>    <p class="sub">A maioria dos produtores, revendedores e empresários rurais começa errado: criam posts nas redes, contratam anúncios online, investem em conteúdo — mas a casa está desorganizada. Não têm identidade clara, não sabem qual é a promessa real do negócio, e o comercial está desalinhado. Resultado: ninguém se sente compelido a chegar perto. Posts bonitos não convertem quando falta estratégia de base.</p>    <ul>      <li><strong>Alinhe primeiro o Institucional</strong><small>(quem você é, por que existe, em que você é diferente no agro)</small></li>      <li><strong>Estruture o Comercial</strong><small>(oferta clara, posicionamento de preço, argumentação que vende)</small></li>      <li><strong>Atraia com presença digital que funciona</strong> — porque a casa já está em ordem</li>    </ul>    <a href="#oferta" class="btn hero-btn">Construir minha estratégia digital →</a>  </div></section>
-<!-- PAINEL 02 — DOR --><section class="dor">  <div class="wrap">    <h2>Você investe em presença digital, mas ninguém vira cliente</h2>    <p>Posta nas redes, coloca anúncios online, contrata agência — e nada muda. O problema não é falta de esforço. É que você está atraindo gente certa pra uma casa desorganizada. Seu posicionamento não é claro, sua oferta não comunica valor, e quando alguém chega até você, encontra confusão em vez de estratégia.</p>    <p>Resultado: gasta com campanhas que não convertem, perde mercado pra concorrentes menores, e segue no mesmo lugar. Presença digital sem base estratégica não é presença — é ruído.</p>  </div></section>
-<!-- PAINEL 04 — CTA INTERMEDIÁRIO --><section class="cta-mid">  <div class="cta-bg"></div>  <div class="plus-field">    <span class="plus" style="top:15%;left:6%;">+</span>    <span class="plus" style="top:70%;left:10%;">+</span>    <span class="plus" style="top:25%;left:92%;">+</span>    <span class="plus" style="top:75%;left:90%;">+</span>    <span class="plus" style="top:10%;left:50%;">+</span>  </div>  <div class="wrap">    <h2>Chega de investir sem direção. Hora de estruturar.</h2>    <p style="color:#4a3c1a;max-width:560px;margin:0 auto 28px;">A diferença entre quem escala no agronegócio e quem fica preso no mesmo lugar é simples: um tem estratégia clara, o outro não. Você já sabe que precisa de presença digital — agora é hora de fazer isso do jeito certo.</p>    <a href="#oferta" class="btn">Começar a construir minha estratégia →</a>  </div></section>
-<!-- PAINEL 05 — MÉTODO --><section class="metodo" id="metodo">  <div class="wrap">    <div class="intro">      <h2>O Método Teovox Agro: 5 Pilares que Transformam Presença em Resultado</h2>      <p>Não começamos por posts. Começamos por dentro — posicionamento, identidade, depois presença digital, depois atração. Essa ordem é não-negociável.</p>    </div>    <div class="pilares">      <div class="pilar reveal">        <div class="panel-icon-badge"><svg><use href="#icon-id"></use></svg></div>        <h3>Pilar 1 — Posicionamento & Identidade</h3>        <p>Quem você é, por que existe, por que o mercado agro precisa de você.</p>      </div>      <div class="pilar reveal">        <div class="panel-icon-badge"><svg><use href="#icon-monitor"></use></svg></div>        <h3>Pilar 2 — Presença Digital</h3>        <p>Website que converte, redes alinhadas, conteúdo que ensina e vende.</p>      </div>      <div class="pilar reveal">        <div class="panel-icon-badge"><svg><use href="#icon-target"></use></svg></div>        <h3>Pilar 3 — Atração de Clientes</h3>        <p>SEO, anúncios online, prospecção — agora sim você aparece pro público certo.</p>      </div>      <div class="pilar reveal">        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>        <h3>Pilar 4 — Vendas Todos os Dias</h3>        <p>Funis automatizados que respeitam os ciclos do agronegócio.</p>      </div>      <div class="pilar reveal">        <div class="panel-icon-badge"><svg><use href="#icon-bulb"></use></svg></div>        <h3>Pilar 5 — Consultoria & Mentoria</h3>        <p>Sua equipe aprende o método. Você ganha independência e clareza.</p>      </div>    </div>    <p class="closing">Casa em ordem primeiro. Depois você a mostra pro mundo. Isso funciona.</p>  </div></section>
-<!-- PAINEL 06 — PARA QUEM É / NÃO É --><section class="publico">  <div class="wrap">    <h2 class="center">Isso é para você?</h2>    <div class="publico-grid">      <div class="publico-col sim">        <h3>Isso é para você se:</h3>        <ul>          <li>✓ Você é produtor, revendedor, empresário rural ou empreendedor no agronegócio</li>          <li>✓ Quer aparecer como referência no mercado agro de Mato Grosso</li>          <li>✓ Está perdendo espaço pra concorrentes porque sua presença digital é amadora ou inexistente</li>          <li>✓ Entende que precisa de estratégia clara, não apenas mais posts nas redes</li>          <li>✓ Está pronto pra investir em algo que funciona de verdade</li>        </ul>      </div>      <div class="publico-col nao">        <h3>Isso NÃO é para você se:</h3>        <ul>          <li>✗ Você quer apenas alguém pra postar nas redes sem pensar em estratégia</li>          <li>✗ Busca a solução mais barata possível, sem importar resultado</li>          <li>✗ Acha que presença digital é opcional ou coisa de agência genérica</li>          <li>✗ Não tem tempo ou vontade de se envolver no processo</li>          <li>✗ Quer resultado em uma semana</li>        </ul>      </div>    </div>  </div></section>
-<!-- PAINEL 07 — ENTREGÁVEIS --><section class="entregaveis" id="entregaveis">  <div class="entregaveis-bg"></div>  <div class="plus-field">    <span class="plus" style="top:8%;left:4%;">+</span>    <span class="plus" style="top:40%;left:95%;">+</span>    <span class="plus" style="top:65%;left:5%;">+</span>    <span class="plus" style="top:88%;left:92%;">+</span>    <span class="plus" style="top:20%;left:50%;">+</span>  </div>  <div class="wrap">    <h2 class="center">O que você recebe</h2>    <div class="entrega-grid">      <div class="entrega-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-id"></use></svg></div>        <h3>Posicionamento & Identidade</h3>        <ul>          <li>Estratégia de marca e posicionamento no mercado agro</li>          <li>Identidade visual completa (logo, cores, tipografia)</li>        </ul>      </div>      <div class="entrega-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-monitor"></use></svg></div>        <h3>Presença Digital</h3>        <ul>          <li>Website profissional com foco em conversão</li>          <li>Gestão completa de redes sociais</li>          <li>Linha editorial estratégica</li>        </ul>      </div>      <div class="entrega-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-target"></use></svg></div>        <h3>Atração de Clientes</h3>        <ul>          <li>Estratégia de SEO e tráfego orgânico</li>          <li>Configuração e gestão de anúncios online</li>          <li>Funil de prospecção</li>        </ul>      </div>      <div class="entrega-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>        <h3>Vendas Todos os Dias</h3>        <ul>          <li>Funis automatizados para vendas recorrentes</li>          <li>Lançamentos com abertura estratégica</li>          <li>Sequências de e-mail nutrição</li>        </ul>      </div>      <div class="entrega-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-bulb"></use></svg></div>        <h3>Consultoria & Mentoria</h3>        <ul>          <li>Diagnóstico estratégico detalhado</li>          <li>Plano de ação personalizado</li>          <li>Mentoria para sua equipe</li>        </ul>      </div>    </div>  </div></section>
-<!-- PAINEL 08 — BÔNUS --><section class="bonus">  <div class="wrap">    <h2>Bônus exclusivo: Diagnóstico Estratégico Completo</h2>    <p>Quando você entra na Teovox Agro, recebe um diagnóstico profundo de posicionamento, análise de concorrência no seu segmento, identificação de lacunas na presença digital atual e roadmap claro de onde começar.</p>    <div class="bonus-box">      <p style="margin-bottom:0;">Esse diagnóstico sozinho já vale o investimento. Você sai dele sabendo exatamente o que está errado, por que está errado, e por onde começar. Muitos clientes já têm clareza apenas com isso.</p>    </div>  </div></section>
-<!-- PAINEL 09 — STACK DE VALOR --><section class="stack">  <div class="wrap">    <h2 class="center">O que você está realmente recebendo</h2>    <p class="center">Quando você contrata a Teovox Agro, você não está pagando por posts ou campanhas soltas. Você está recebendo um sistema completo que trabalha pra você.</p>    <ul class="stack-list">      <li><span>Posicionamento & Identidade</span><span>Autoridade construída no seu mercado</span></li>      <li><span>Presença Digital</span><span>Seu negócio funcionando 24/7 na internet</span></li>      <li><span>Atração de Clientes</span><span>Leads qualificados chegando de forma recorrente</span></li>      <li><span>Vendas Todos os Dias</span><span>Funis que convertem enquanto você trabalha</span></li>      <li><span>Consultoria & Mentoria</span><span>Sua equipe equipada com método e clareza</span></li>    </ul>    <p>Isso equivale a ter uma estrutura digital profissional rodando o tempo todo — o que a maioria dos concorrentes ainda está tentando fazer de forma amadora.</p>    <p style="font-weight:600;color:var(--verde-escuro);">O investimento é em um sistema que vai gerar resultado todos os dias, em todos os ciclos do agronegócio. Não é custo. É infraestrutura que fatura.</p>  </div></section>
-<!-- PAINEL 10 (RESULTADOS, sem depoimentos) --><section class="resultados">  <div class="wrap">    <h2 class="center">O que clientes da Teovox Agro conseguem</h2>    <p class="center">Produtores, revendedores e empresários rurais que estruturam presença e posicionamento com a Teovox Agro veem mudanças concretas:</p>    <div class="resultado-grid">      <div class="resultado-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>        <h3>Leads qualificados aumentam 3x</h3>        <p>De campanhas genéricas pra prospect que realmente quer comprar</p>      </div>      <div class="resultado-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-star"></use></svg></div>        <h3>Autoridade no mercado</h3>        <p>Você sai de desconhecido pra referência no seu nicho agro</p>      </div>      <div class="resultado-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-refresh"></use></svg></div>        <h3>Vendas recorrentes</h3>        <p>Funis que funcionam independente de você estar "tocando"</p>      </div>      <div class="resultado-card reveal">        <div class="panel-icon-badge"><svg><use href="#icon-currency"></use></svg></div>        <h3>ROI claro</h3>        <p>Cada real investido em presença digital volta multiplicado em negócio fechado</p>      </div>    </div>    <p style="margin-top:24px;">Esses não são promessas genéricas. São resultados que acontecem quando você estrutura posicionamento antes de atrair, e atrai com estratégia em vez de ruído.</p>  </div></section>
-<!-- PAINEL 11 — SUPORTE --><section class="suporte" id="suporte">  <div class="wrap">    <h2 class="center">Como você é acompanhado</h2>    <p class="center">Você não fica sozinho nesse processo. A Teovox Agro oferece suporte estruturado em todas as etapas:</p>    <ul>      <li><strong>Diagnóstico e planejamento</strong> — Reuniões estratégicas pra definir direção clara</li>      <li><strong>Execução com acompanhamento</strong> — Você sabe o que está sendo feito, quando e por quê</li>      <li><strong>Feedback e ajustes</strong> — Revisões periódicas baseadas em dados reais, não em achismo</li>      <li><strong>Consultoria para sua equipe</strong> — Treinamento pra que você não fique dependente de agência</li>      <li><strong>Acesso direto</strong> — Canal aberto pra dúvidas, alinhamentos e decisões rápidas</li>    </ul>    <p style="margin-top:20px;">O suporte não é apenas "resolver problema quando quebra". É estar junto no processo, garantindo que você entenda cada movimento, aprenda o método, e saia da parceria com clareza e independência.</p>  </div></section>
-<!-- PAINEL 12 — GARANTIA --><section class="garantia">  
+  @keyframes heroEnter{
+    from{opacity:0;transform:translateX(-40px);}
+    to{opacity:1;transform:translateX(0);}
+  }
+  .hero h1,
+  .hero .sub,
+  .hero ul li,
+  .hero .hero-btn{
+    animation:heroEnter 3s cubic-bezier(.16,1,.3,1) both;
+  }
+  .hero h1{animation-delay:.05s;}
+  .hero .sub{animation-delay:.2s;}
+  .hero ul li:nth-child(1){animation-delay:.35s;}
+  .hero ul li:nth-child(2){animation-delay:.45s;}
+  .hero ul li:nth-child(3){animation-delay:.55s;}
+  .hero .hero-btn{animation-delay:.7s;}
+
+  .hero h1{color:var(--branco);font-size:3.4rem;margin-bottom:14px;}
+  .hero .sub{color:rgba(255,255,255,.9);font-size:1.15rem;max-width:100%;margin:0 0 24px;}
+  .hero ul{list-style:none;text-align:left;max-width:640px;margin:0 0 36px;}
+  .hero li{
+    padding:12px 0 12px 32px;
+    position:relative;
+    color:var(--branco);
+    border-bottom:1px solid rgba(255,255,255,.2);
+  }
+  .hero li strong{font-weight:800;color:#c0d73e;}
+  .hero li small{display:block;font-weight:400;font-size:1em;font-family:inherit;}
+  .hero li:before{
+    content:"✓";
+    position:absolute;left:0;top:12px;
+    color:var(--dourado-claro);
+    font-weight:800;
+  }
+  /* DOR */
+  .dor{background:var(--branco);}
+  .dor .wrap{max-width:760px;text-align:center;}
+  .dor h2{color:var(--verde-escuro);}
+
+  /* CTA intermediário */
+  .cta-mid{
+    position:relative;
+    overflow:hidden;
+    background:var(--dourado);
+    color:var(--verde-escuro);
+    text-align:center;
+    padding:60px 0;
+  }
+  .cta-bg{
+    position:absolute;
+    top:-30%;left:0;right:0;
+    height:160%;
+    background:url('IMAGENS/slider-soja.jpg') center 70%/cover no-repeat;
+    opacity:.15;
+    z-index:0;
+    will-change:transform;
+  }
+  .cta-mid .wrap{position:relative;z-index:1;}
+  .cta-mid h2{color:var(--verde-escuro);}
+  .cta-mid .btn{background:var(--verde-escuro);color:var(--branco);}
+  .cta-mid .btn:hover{background:var(--verde);}
+
+  /* ÍCONE DE PAINEL (título) */
+  .panel-icon-badge{
+    width:52px;height:52px;
+    border-radius:50%;
+    background:var(--verde);
+    display:flex;align-items:center;justify-content:center;
+    margin:0 auto 14px;
+  }
+  .panel-icon-badge svg{
+    width:26px;height:26px;
+    fill:none;
+    stroke:var(--branco);
+    stroke-width:1.8;
+    stroke-linecap:round;
+    stroke-linejoin:round;
+  }
+
+  /* ANIMAÇÃO DE ENTRADA (uma única vez) */
+  .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease, transform .7s ease;}
+  .reveal.reveal-in{opacity:1;transform:translateY(0);}
+
+  /* MÉTODO */
+  .metodo{background:var(--creme);}
+  .metodo .wrap{max-width:900px;}
+  .metodo .intro{max-width:700px;margin:0 auto 40px;text-align:center;}
+  .pilares{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;}
+  .pilar{
+    background:var(--branco);
+    border-radius:6px;
+    padding:28px 24px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .pilar h3{color:var(--verde);margin-bottom:8px;font-size:1.05rem;}
+  .pilar p{margin-bottom:0;font-size:.95rem;}
+  .metodo .closing{text-align:center;font-weight:600;color:var(--verde-escuro);margin-top:32px;}
+
+  /* PARA QUEM */
+  .publico{background:var(--branco);}
+  .publico-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;}
+  .publico-col{padding:28px;border-radius:8px;}
+  .publico-col.sim{background:#eef4ea;}
+  .publico-col.nao{background:#f7ece9;}
+  .publico-col h3{margin-bottom:16px;}
+  .publico-col.sim h3{color:var(--verde);}
+  .publico-col.nao h3{color:#a5453a;}
+  .publico-col ul{list-style:none;}
+  .publico-col li{padding:8px 0;font-size:.97rem;color:var(--texto);}
+
+  /* ENTREGÁVEIS */
+  .entregaveis{position:relative;overflow:hidden;background:var(--creme);}
+  .entregaveis-bg{
+    position:absolute;
+    top:-30%;left:0;right:0;
+    height:160%;
+    background:url('IMAGENS/slider-colheitadeira.jpg') center/cover no-repeat;
+    opacity:.25;
+    z-index:0;
+    will-change:transform;
+  }
+  .entregaveis .wrap{position:relative;z-index:1;}
+  .entrega-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:24px;margin-top:30px;}
+  .entrega-card{background:var(--branco);border-radius:8px;padding:24px;box-shadow:0 2px 10px rgba(0,0,0,.04);}
+  .entrega-card h3{color:var(--verde-escuro);margin-bottom:12px;font-size:1.05rem;text-align:center;}
+  .entrega-card ul{list-style:none;}
+  .entrega-card li{
+    padding:6px 0 6px 22px;
+    position:relative;
+    font-size:.92rem;
+    color:var(--texto-claro);
+  }
+  .entrega-card li:before{content:"•";position:absolute;left:0;color:var(--dourado);font-weight:800;}
+
+  /* BÔNUS */
+  .bonus{background:var(--verde-escuro);color:var(--branco);}
+  .bonus .wrap{max-width:760px;text-align:center;}
+  .bonus h2{color:var(--dourado-claro);}
+  .bonus p{color:#d8e4d3;}
+  .bonus-box{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:8px;
+    padding:28px;
+    margin-top:20px;
+    text-align:left;
+  }
+
+  /* STACK DE VALOR */
+  .stack{background:var(--branco);}
+  .stack .wrap{max-width:760px;}
+  .stack-list{list-style:none;margin:24px 0;}
+  .stack-list li{
+    display:flex;
+    justify-content:space-between;
+    padding:14px 0;
+    border-bottom:1px solid #e5e0d3;
+    font-weight:600;
+    color:var(--verde-escuro);
+  }
+  .stack-list span:last-child{color:var(--texto-claro);font-weight:400;}
+
+  /* RESULTADOS */
+  .resultados{background:var(--creme);}
+  .resultado-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:30px;}
+  .resultado-card{
+    background:var(--branco);
+    border-radius:8px;
+    padding:26px;
+    text-align:center;
+    box-shadow:0 2px 10px rgba(0,0,0,.04);
+  }
+  .resultado-card h3{color:var(--dourado);font-size:1.1rem;margin-bottom:10px;}
+  .resultado-card p{font-size:.92rem;margin-bottom:0;}
+
+  /* SUPORTE */
+  .suporte{background:var(--branco);}
+  .suporte .wrap{max-width:760px;}
+  .suporte ul{list-style:none;margin-top:20px;}
+  .suporte li{
+    padding:12px 0 12px 32px;
+    position:relative;
+    border-bottom:1px solid #ece7d8;
+  }
+  .suporte li:before{content:"→";position:absolute;left:0;color:var(--verde);font-weight:800;}
+  .suporte strong{color:var(--verde-escuro);}
+
+  /* GARANTIA */
+  .garantia{background:var(--verde);color:var(--branco);}
+  .garantia .wrap{max-width:700px;text-align:center;}
+  .garantia h2{color:var(--branco);}
+  .garantia p{color:#e4ecdf;}
+
+  /* AUTORIDADE */
+  .autoridade{background:var(--creme);}
+  .autoridade .wrap{max-width:900px;}
+  .autoridade-grid{display:grid;grid-template-columns:280px 1fr;gap:40px;align-items:center;text-align:left;}
+  .autoridade-grid img{width:100%;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.12);}
+  .autoridade-grid .autoridade-text p:last-child{margin-bottom:0;}
+  @media(max-width:700px){
+    .autoridade-grid{grid-template-columns:1fr;text-align:center;}
+    .autoridade-grid img{max-width:220px;margin:0 auto;}
+  }
+
+  /* FAQ */
+  .faq{background:var(--branco);}
+  .faq .wrap{max-width:760px;}
+  details{
+    border-bottom:1px solid #e5e0d3;
+    padding:18px 0;
+  }
+  details summary{
+    font-weight:700;
+    color:var(--verde-escuro);
+    cursor:pointer;
+    list-style:none;
+    position:relative;
+    padding-right:30px;
+  }
+  details summary::-webkit-details-marker{display:none;}
+  details summary:after{
+    content:"+";
+    position:absolute;right:0;top:0;
+    font-size:1.3rem;
+    color:var(--dourado);
+  }
+  details[open] summary:after{content:"–";}
+  details p{margin-top:12px;margin-bottom:0;}
+
+  /* OFERTA FINAL */
+  .oferta{
+    background:linear-gradient(160deg, var(--verde-escuro), var(--verde) 70%);
+    color:var(--branco);
+    text-align:center;
+  }
+  .oferta .wrap{max-width:780px;}
+  .oferta h2{color:var(--branco);}
+  .escolhas{display:grid;grid-template-columns:1fr 1fr;gap:20px;text-align:left;margin:32px 0;}
+  .escolha{
+    background:rgba(255,255,255,.06);
+    border:1px solid rgba(255,255,255,.15);
+    border-radius:8px;
+    padding:26px 22px;
+    text-align:center;
+  }
+  .escolha .panel-icon-badge{background:var(--dourado);}
+  .escolha h3{color:var(--dourado-claro);margin-bottom:10px;font-size:1rem;}
+  .escolha p{color:#d8e4d3;font-size:.92rem;margin-bottom:0;text-align:left;}
+
+  footer{
+    background:var(--verde-escuro);
+    color:#a9b8a3;
+    text-align:center;
+    padding:32px 0;
+    font-size:.9rem;
+  }
+
+  /* MOUSE TRAIL */
+  .cursor-dot,.cursor-glow{
+    position:fixed;
+    top:0;left:0;
+    border-radius:50%;
+    pointer-events:none;
+    z-index:9999;
+    transform:translate(-50%,-50%);
+    will-change:transform;
+  }
+  .cursor-dot{
+    width:8px;height:8px;
+    background:var(--dourado);
+  }
+  .cursor-glow{
+    width:36px;height:36px;
+    background:radial-gradient(circle, rgba(201,154,63,.5), rgba(201,154,63,0) 70%);
+  }
+  @media (hover:none), (pointer:coarse){
+    .cursor-dot,.cursor-glow{display:none;}
+  }
+
+  @media(max-width:700px){
+    h1{font-size:2.2rem;}
+    h2{font-size:1.5rem;}
+    .publico-grid, .escolhas{grid-template-columns:1fr;}
+    section{padding:56px 0;}
+  }
+</style>
+</head>
+<body>
+
+<svg style="display:none" aria-hidden="true">
+  <symbol id="icon-id" viewBox="0 0 24 24"><rect x="2" y="5" width="20" height="14" rx="2"/><circle cx="8" cy="12" r="2"/><line x1="13" y1="10" x2="18" y2="10"/><line x1="13" y1="14" x2="18" y2="14"/></symbol>
+  <symbol id="icon-monitor" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="13" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></symbol>
+  <symbol id="icon-target" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-trending" viewBox="0 0 24 24"><polyline points="3 17 9 11 13 15 21 6"/><polyline points="15 6 21 6 21 12"/></symbol>
+  <symbol id="icon-bulb" viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2z"/></symbol>
+  <symbol id="icon-star" viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9.5 17 14.5 18.5 22 12 18 5.5 22 7 14.5 2 9.5 9 9"/></symbol>
+  <symbol id="icon-refresh" viewBox="0 0 24 24"><polyline points="23 4 23 10 17 10"/><polyline points="1 20 1 14 7 14"/><path d="M3.5 9a9 9 0 0 1 14.6-3.4L23 10"/><path d="M20.5 15a9 9 0 0 1-14.6 3.4L1 14"/></symbol>
+  <symbol id="icon-currency" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v10"/><path d="M15 9.5c0-1.4-1.3-2.5-3-2.5s-3 1-3 2.3c0 1.4 1.3 1.9 3 2.2s3 .9 3 2.3c0 1.3-1.3 2.2-3 2.2s-3-1-3-2.4"/></symbol>
+  <symbol id="icon-alert" viewBox="0 0 24 24"><path d="M12 3 2 20h20L12 3z"/><line x1="12" y1="9" x2="12" y2="14"/><circle cx="12" cy="17" r=".6" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-check-circle" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><polyline points="8 12 11 15 16 9"/></symbol>
+  <symbol id="icon-like" viewBox="0 0 24 24"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></symbol>
+  <symbol id="icon-globe" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><line x1="3" y1="12" x2="21" y2="12"/><path d="M12 3a13.6 13.6 0 0 1 3.8 9A13.6 13.6 0 0 1 12 21a13.6 13.6 0 0 1-3.8-9A13.6 13.6 0 0 1 12 3z"/></symbol>
+  <symbol id="icon-cart" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></symbol>
+  <symbol id="icon-wifi" viewBox="0 0 24 24"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1" fill="currentColor" stroke="none"/></symbol>
+  <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></symbol>
+  <symbol id="icon-share" viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></symbol>
+  <symbol id="icon-award" viewBox="0 0 24 24"><circle cx="12" cy="8" r="7"/><polyline points="8.21 13.89 7 23 12 20 17 23 15.79 13.88"/></symbol>
+  <symbol id="icon-megaphone" viewBox="0 0 24 24"><path d="M3 11v3a2 2 0 0 0 2 2h1l4 4V7l-4 4H5a2 2 0 0 0-2 2z"/><path d="M17 7a5 5 0 0 1 0 10"/><path d="M14 4a9 9 0 0 1 0 16"/></symbol>
+  <symbol id="icon-whatsapp" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12c0 1.85.5 3.58 1.35 5.07L2 22l5.06-1.32A9.94 9.94 0 0 0 12 22c5.52 0 10-4.48 10-10S17.52 2 12 2zm5.2 14.2c-.22.62-1.28 1.18-1.77 1.25-.45.07-1.02.1-1.65-.1-.38-.12-.87-.28-1.5-.55-2.64-1.14-4.36-3.8-4.5-3.98-.13-.18-1.08-1.44-1.08-2.75 0-1.3.68-1.94.92-2.2.24-.26.53-.33.7-.33h.5c.16 0 .38-.06.6.46.22.53.75 1.83.82 1.96.07.13.11.29.02.47-.09.18-.14.29-.27.44-.13.15-.28.34-.4.46-.13.13-.27.27-.12.53.15.26.68 1.12 1.46 1.82 1 .9 1.85 1.18 2.11 1.31.26.13.41.11.56-.07.15-.18.65-.76.82-1.02.17-.26.34-.22.57-.13.23.09 1.47.69 1.72.82.25.13.42.19.48.3.06.11.06.62-.16 1.24z"/></symbol>
+</svg>
+
+<!-- PAINEL 01 — HERO -->
+<section class="hero" id="inicio">
+  <div class="hero-bg"></div>
+  <div class="plus-field">
+    <span class="plus" style="top:12%;left:8%;"><svg><use href="#icon-like"></use></svg></span>
+    <span class="plus" style="top:22%;left:88%;"><svg><use href="#icon-globe"></use></svg></span>
+    <span class="plus" style="top:38%;left:18%;"><svg><use href="#icon-cart"></use></svg></span>
+    <span class="plus" style="top:65%;left:92%;"><svg><use href="#icon-wifi"></use></svg></span>
+    <span class="plus" style="top:78%;left:6%;"><svg><use href="#icon-search"></use></svg></span>
+    <span class="plus" style="top:85%;left:50%;"><svg><use href="#icon-share"></use></svg></span>
+    <span class="plus" style="top:15%;left:45%;"><svg><use href="#icon-award"></use></svg></span>
+    <span class="plus" style="top:55%;left:78%;"><svg><use href="#icon-megaphone"></use></svg></span>
+    <span class="plus" style="top:5%;left:2%;"><svg><use href="#icon-like"></use></svg></span>
+    <span class="plus" style="top:32%;left:3%;"><svg><use href="#icon-globe"></use></svg></span>
+    <span class="plus" style="top:52%;left:4%;"><svg><use href="#icon-cart"></use></svg></span>
+    <span class="plus" style="top:92%;left:3%;"><svg><use href="#icon-wifi"></use></svg></span>
+    <span class="plus" style="top:8%;left:95%;"><svg><use href="#icon-search"></use></svg></span>
+    <span class="plus" style="top:45%;left:96%;"><svg><use href="#icon-share"></use></svg></span>
+    <span class="plus" style="top:72%;left:94%;"><svg><use href="#icon-award"></use></svg></span>
+    <span class="plus" style="top:95%;left:97%;"><svg><use href="#icon-megaphone"></use></svg></span>
+  </div>
+  <header class="site-header">
+    <div class="site-header-inner">
+      <a href="#inicio" class="site-logo"><img src="logo-teovox-agro-branca.png" alt="Teovox Agro"></a>
+      <nav class="site-nav">
+        <a href="#inicio">Início</a>
+        <a href="#metodo">O método</a>
+        <a href="#entregaveis">Serviços</a>
+        <a href="#suporte">Suporte</a>
+        <a href="#sobre">Sobre nós</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+      <a class="whatsapp-btn" target="_blank" rel="noopener" href="https://wa.me/5579996343621?text=Teovox%20Agro%20-%20Quero%20mais%20informa%C3%A7%C3%B5es%20sobre%20agromarketing%20para%20o%20meu%20neg%C3%B3cio.">
+        <svg><use href="#icon-whatsapp"></use></svg> Fale agora
+      </a>
+    </div>
+  </header>
+  <div class="wrap">
+    <h1>Sua presença digital e posicionamento estão invisíveis no mercado agro</h1>
+    <p class="sub">A maioria dos produtores, revendedores e empresários rurais começa errado: criam posts nas redes, contratam anúncios online, investem em conteúdo — mas a casa está desorganizada. Não têm identidade clara, não sabem qual é a promessa real do negócio, e o comercial está desalinhado. Resultado: ninguém se sente compelido a chegar perto. Posts bonitos não convertem quando falta estratégia de base.</p>
+    <ul>
+      <li><strong>Alinhe primeiro o Institucional</strong><small>(quem você é, por que existe, em que você é diferente no agro)</small></li>
+      <li><strong>Estruture o Comercial</strong><small>(oferta clara, posicionamento de preço, argumentação que vende)</small></li>
+      <li><strong>Atraia com presença digital que funciona</strong> — porque a casa já está em ordem</li>
+    </ul>
+    <a href="#oferta" class="btn hero-btn">Construir minha estratégia digital →</a>
+  </div>
+</section>
+
+<!-- PAINEL 02 — DOR -->
+<section class="dor">
+  <div class="wrap">
+    <h2>Você investe em presença digital, mas ninguém vira cliente</h2>
+    <p>Posta nas redes, coloca anúncios online, contrata agência — e nada muda. O problema não é falta de esforço. É que você está atraindo gente certa pra uma casa desorganizada. Seu posicionamento não é claro, sua oferta não comunica valor, e quando alguém chega até você, encontra confusão em vez de estratégia.</p>
+    <p>Resultado: gasta com campanhas que não convertem, perde mercado pra concorrentes menores, e segue no mesmo lugar. Presença digital sem base estratégica não é presença — é ruído.</p>
+  </div>
+</section>
+
+<!-- PAINEL 04 — CTA INTERMEDIÁRIO -->
+<section class="cta-mid">
+  <div class="cta-bg"></div>
+  <div class="plus-field">
+    <span class="plus" style="top:15%;left:6%;">+</span>
+    <span class="plus" style="top:70%;left:10%;">+</span>
+    <span class="plus" style="top:25%;left:92%;">+</span>
+    <span class="plus" style="top:75%;left:90%;">+</span>
+    <span class="plus" style="top:10%;left:50%;">+</span>
+  </div>
+  <div class="wrap">
+    <h2>Chega de investir sem direção. Hora de estruturar.</h2>
+    <p style="color:#4a3c1a;max-width:560px;margin:0 auto 28px;">A diferença entre quem escala no agronegócio e quem fica preso no mesmo lugar é simples: um tem estratégia clara, o outro não. Você já sabe que precisa de presença digital — agora é hora de fazer isso do jeito certo.</p>
+    <a href="#oferta" class="btn">Começar a construir minha estratégia →</a>
+  </div>
+</section>
+
+<!-- PAINEL 05 — MÉTODO -->
+<section class="metodo" id="metodo">
+  <div class="wrap">
+    <div class="intro">
+      <h2>O Método Teovox Agro: 5 Pilares que Transformam Presença em Resultado</h2>
+      <p>Não começamos por posts. Começamos por dentro — posicionamento, identidade, depois presença digital, depois atração. Essa ordem é não-negociável.</p>
+    </div>
+    <div class="pilares">
+      <div class="pilar reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-id"></use></svg></div>
+        <h3>Pilar 1 — Posicionamento & Identidade</h3>
+        <p>Quem você é, por que existe, por que o mercado agro precisa de você.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-monitor"></use></svg></div>
+        <h3>Pilar 2 — Presença Digital</h3>
+        <p>Website que converte, redes alinhadas, conteúdo que ensina e vende.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-target"></use></svg></div>
+        <h3>Pilar 3 — Atração de Clientes</h3>
+        <p>SEO, anúncios online, prospecção — agora sim você aparece pro público certo.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>
+        <h3>Pilar 4 — Vendas Todos os Dias</h3>
+        <p>Funis automatizados que respeitam os ciclos do agronegócio.</p>
+      </div>
+      <div class="pilar reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-bulb"></use></svg></div>
+        <h3>Pilar 5 — Consultoria & Mentoria</h3>
+        <p>Sua equipe aprende o método. Você ganha independência e clareza.</p>
+      </div>
+    </div>
+    <p class="closing">Casa em ordem primeiro. Depois você a mostra pro mundo. Isso funciona.</p>
+  </div>
+</section>
+
+<!-- PAINEL 06 — PARA QUEM É / NÃO É -->
+<section class="publico">
+  <div class="wrap">
+    <h2 class="center">Isso é para você?</h2>
+    <div class="publico-grid">
+      <div class="publico-col sim">
+        <h3>Isso é para você se:</h3>
+        <ul>
+          <li>✓ Você é produtor, revendedor, empresário rural ou empreendedor no agronegócio</li>
+          <li>✓ Quer aparecer como referência no mercado agro de Mato Grosso</li>
+          <li>✓ Está perdendo espaço pra concorrentes porque sua presença digital é amadora ou inexistente</li>
+          <li>✓ Entende que precisa de estratégia clara, não apenas mais posts nas redes</li>
+          <li>✓ Está pronto pra investir em algo que funciona de verdade</li>
+        </ul>
+      </div>
+      <div class="publico-col nao">
+        <h3>Isso NÃO é para você se:</h3>
+        <ul>
+          <li>✗ Você quer apenas alguém pra postar nas redes sem pensar em estratégia</li>
+          <li>✗ Busca a solução mais barata possível, sem importar resultado</li>
+          <li>✗ Acha que presença digital é opcional ou coisa de agência genérica</li>
+          <li>✗ Não tem tempo ou vontade de se envolver no processo</li>
+          <li>✗ Quer resultado em uma semana</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL 07 — ENTREGÁVEIS -->
+<section class="entregaveis" id="entregaveis">
+  <div class="entregaveis-bg"></div>
+  <div class="plus-field">
+    <span class="plus" style="top:8%;left:4%;">+</span>
+    <span class="plus" style="top:40%;left:95%;">+</span>
+    <span class="plus" style="top:65%;left:5%;">+</span>
+    <span class="plus" style="top:88%;left:92%;">+</span>
+    <span class="plus" style="top:20%;left:50%;">+</span>
+  </div>
+  <div class="wrap">
+    <h2 class="center">O que você recebe</h2>
+    <div class="entrega-grid">
+      <div class="entrega-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-id"></use></svg></div>
+        <h3>Posicionamento & Identidade</h3>
+        <ul>
+          <li>Estratégia de marca e posicionamento no mercado agro</li>
+          <li>Identidade visual completa (logo, cores, tipografia)</li>
+        </ul>
+      </div>
+      <div class="entrega-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-monitor"></use></svg></div>
+        <h3>Presença Digital</h3>
+        <ul>
+          <li>Website profissional com foco em conversão</li>
+          <li>Gestão completa de redes sociais</li>
+          <li>Linha editorial estratégica</li>
+        </ul>
+      </div>
+      <div class="entrega-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-target"></use></svg></div>
+        <h3>Atração de Clientes</h3>
+        <ul>
+          <li>Estratégia de SEO e tráfego orgânico</li>
+          <li>Configuração e gestão de anúncios online</li>
+          <li>Funil de prospecção</li>
+        </ul>
+      </div>
+      <div class="entrega-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>
+        <h3>Vendas Todos os Dias</h3>
+        <ul>
+          <li>Funis automatizados para vendas recorrentes</li>
+          <li>Lançamentos com abertura estratégica</li>
+          <li>Sequências de e-mail nutrição</li>
+        </ul>
+      </div>
+      <div class="entrega-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-bulb"></use></svg></div>
+        <h3>Consultoria & Mentoria</h3>
+        <ul>
+          <li>Diagnóstico estratégico detalhado</li>
+          <li>Plano de ação personalizado</li>
+          <li>Mentoria para sua equipe</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL 08 — BÔNUS -->
+<section class="bonus">
+  <div class="wrap">
+    <h2>Bônus exclusivo: Diagnóstico Estratégico Completo</h2>
+    <p>Quando você entra na Teovox Agro, recebe um diagnóstico profundo de posicionamento, análise de concorrência no seu segmento, identificação de lacunas na presença digital atual e roadmap claro de onde começar.</p>
+    <div class="bonus-box">
+      <p style="margin-bottom:0;">Esse diagnóstico sozinho já vale o investimento. Você sai dele sabendo exatamente o que está errado, por que está errado, e por onde começar. Muitos clientes já têm clareza apenas com isso.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL 09 — STACK DE VALOR -->
+<section class="stack">
+  <div class="wrap">
+    <h2 class="center">O que você está realmente recebendo</h2>
+    <p class="center">Quando você contrata a Teovox Agro, você não está pagando por posts ou campanhas soltas. Você está recebendo um sistema completo que trabalha pra você.</p>
+    <ul class="stack-list">
+      <li><span>Posicionamento & Identidade</span><span>Autoridade construída no seu mercado</span></li>
+      <li><span>Presença Digital</span><span>Seu negócio funcionando 24/7 na internet</span></li>
+      <li><span>Atração de Clientes</span><span>Leads qualificados chegando de forma recorrente</span></li>
+      <li><span>Vendas Todos os Dias</span><span>Funis que convertem enquanto você trabalha</span></li>
+      <li><span>Consultoria & Mentoria</span><span>Sua equipe equipada com método e clareza</span></li>
+    </ul>
+    <p>Isso equivale a ter uma estrutura digital profissional rodando o tempo todo — o que a maioria dos concorrentes ainda está tentando fazer de forma amadora.</p>
+    <p style="font-weight:600;color:var(--verde-escuro);">O investimento é em um sistema que vai gerar resultado todos os dias, em todos os ciclos do agronegócio. Não é custo. É infraestrutura que fatura.</p>
+  </div>
+</section>
+
+<!-- PAINEL 10 (RESULTADOS, sem depoimentos) -->
+<section class="resultados">
+  <div class="wrap">
+    <h2 class="center">O que clientes da Teovox Agro conseguem</h2>
+    <p class="center">Produtores, revendedores e empresários rurais que estruturam presença e posicionamento com a Teovox Agro veem mudanças concretas:</p>
+    <div class="resultado-grid">
+      <div class="resultado-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-trending"></use></svg></div>
+        <h3>Leads qualificados aumentam 3x</h3>
+        <p>De campanhas genéricas pra prospect que realmente quer comprar</p>
+      </div>
+      <div class="resultado-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-star"></use></svg></div>
+        <h3>Autoridade no mercado</h3>
+        <p>Você sai de desconhecido pra referência no seu nicho agro</p>
+      </div>
+      <div class="resultado-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-refresh"></use></svg></div>
+        <h3>Vendas recorrentes</h3>
+        <p>Funis que funcionam independente de você estar "tocando"</p>
+      </div>
+      <div class="resultado-card reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-currency"></use></svg></div>
+        <h3>ROI claro</h3>
+        <p>Cada real investido em presença digital volta multiplicado em negócio fechado</p>
+      </div>
+    </div>
+    <p style="margin-top:24px;">Esses não são promessas genéricas. São resultados que acontecem quando você estrutura posicionamento antes de atrair, e atrai com estratégia em vez de ruído.</p>
+  </div>
+</section>
+
+<!-- PAINEL 11 — SUPORTE -->
+<section class="suporte" id="suporte">
+  <div class="wrap">
+    <h2 class="center">Como você é acompanhado</h2>
+    <p class="center">Você não fica sozinho nesse processo. A Teovox Agro oferece suporte estruturado em todas as etapas:</p>
+    <ul>
+      <li><strong>Diagnóstico e planejamento</strong> — Reuniões estratégicas pra definir direção clara</li>
+      <li><strong>Execução com acompanhamento</strong> — Você sabe o que está sendo feito, quando e por quê</li>
+      <li><strong>Feedback e ajustes</strong> — Revisões periódicas baseadas em dados reais, não em achismo</li>
+      <li><strong>Consultoria para sua equipe</strong> — Treinamento pra que você não fique dependente de agência</li>
+      <li><strong>Acesso direto</strong> — Canal aberto pra dúvidas, alinhamentos e decisões rápidas</li>
+    </ul>
+    <p style="margin-top:20px;">O suporte não é apenas "resolver problema quando quebra". É estar junto no processo, garantindo que você entenda cada movimento, aprenda o método, e saia da parceria com clareza e independência.</p>
+  </div>
+</section>
+
+<!-- PAINEL 12 — GARANTIA -->
+<section class="garantia">
+  <div class="wrap">
+    <h2>Nós não oferecemos garantia de dinheiro de volta — oferecemos algo melhor.</h2>
+    <p>Não funcionamos com garantia incondicional porque sabemos que resultado em estratégia digital não é imediato. Leva tempo, envolve sua participação, e depende de você estar aberto ao processo.</p>
+    <p>O que oferecemos é <strong>transparência total, acompanhamento real e ajustes contínuos</strong>. Se algo não está funcionando, a gente muda. Se você não está vendo direção, a gente conversa e realinha.</p>
+    <p style="margin-bottom:0;">Risco zero não existe em estratégia. Mas clareza, método e parceria genuína, sim. E isso é o que você tem aqui.</p>
+  </div>
+</section>
+
+<!-- PAINEL 13 — AUTORIDADE -->
+<section class="autoridade" id="sobre">
+  <div class="wrap">
+    <div class="autoridade-grid">
+      <img src="flavio-amorim.png" alt="Flávio Amorim">
+      <div class="autoridade-text">
+        <h2>Quem está por trás da Teovox Agro: Flávio Amorim</h2>
+        <p>Flávio Amorim é especialista em Marketing Estratégico e Digital. Passou anos estruturando presença, posicionamento e vendas para negócios que precisam de clareza e resultado real — não receita genérica ou posts aleatórios.</p>
+        <p>Agora está trazendo essa expertise especificamente pro agronegócio. E é isso que o segmento agro estava precisando: alguém que entende estratégia digital de verdade, que não copia receita de varejo, e que estrutura posicionamento antes de atrair.</p>
+        <p>A Teovox Agro atende produtores, revendedores, empresários rurais e empresas de insumo em Mato Grosso. Clientes reais, negócios reais, resultados que falam por si.</p>
+        <p>Credibilidade vem de entender como estratégia digital funciona e de estar disposto a aprender seu mercado — não de fingir que conhece agro quando não conhece.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PAINEL 14 — FAQ -->
+<section class="faq" id="faq">
+  <div class="wrap">
+    <h2 class="center">Perguntas frequentes</h2>
+    <details open>
+      <summary>Por que presença digital é importante pra agro se meus clientes já me conhecem?</summary>
+      <p>Porque seus clientes atuais não são eternos e novos clientes não o conhecem. Quando alguém pesquisa produtor, revendedor ou empresa de insumo em Mato Grosso, se você não aparece, a venda vai pro seu concorrente que aparece.</p>
+    </details>
+    <details>
+      <summary>Quanto tempo leva pra ver resultado?</summary>
+      <p>Estratégia de base (posicionamento, identidade, presença) leva 60-90 dias. Depois disso, leads e vendas começam a chegar de forma consistente. Não é uma semana, mas também não é um ano.</p>
+    </details>
+    <details>
+      <summary>Vocês realmente entendem agro ou é só mais uma agência genérica?</summary>
+      <p>A gente está entrando no agro porque entende Marketing Estratégico de verdade. Não fingimos ser agrônomos — mas entendemos como estruturar presença, posicionamento e vendas. O agro ganha porque traz expertise digital real.</p>
+    </details>
+    <details>
+      <summary>Qual é o investimento?</summary>
+      <p>Pacotes personalizados conforme seu tamanho, segmento e objetivos. Quanto maior o resultado que você quer, maior o investimento. Conversamos no diagnóstico e você vê exatamente pra onde vai cada real.</p>
+    </details>
+    <details>
+      <summary>Como é o processo? Vocês fazem tudo ou eu preciso participar?</summary>
+      <p>A gente executa, mas você participa das decisões estratégicas. Treinamos sua equipe pra que você ganhe independência — você não fica refém de agência.</p>
+    </details>
+    <details>
+      <summary>Posso parar quando quiser?</summary>
+      <p>Sim. Mas nossa proposta é parceria a longo prazo, não serviço avulso. A estratégia funciona melhor quando você está comprometido.</p>
+    </details>
+    <details>
+      <summary>Vocês trabalham com que ferramentas?</summary>
+      <p>As melhores disponíveis — WordPress, Meta Ads, Google Ads, CRM, automação de email. Mas a ferramenta é secundária. O que importa é a estratégia.</p>
+    </details>
+  </div>
+</section>
+
+<!-- PAINEL 15 — OFERTA FINAL -->
+<section class="oferta" id="oferta">
+  <div class="wrap">
+    <h2>Você tem duas escolhas agora.</h2>
+    <div class="escolhas">
+      <div class="escolha reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-alert"></use></svg></div>
+        <h3>Escolha 1</h3>
+        <p>Continua fazendo o que está fazendo — posts aleatórios, agências genéricas, presença digital desorganizada. Seu concorrente, enquanto isso, estrutura posicionamento, aparece como referência, e pega seus clientes.</p>
+      </div>
+      <div class="escolha reveal">
+        <div class="panel-icon-badge"><svg><use href="#icon-check-circle"></use></svg></div>
+        <h3>Escolha 2</h3>
+        <p>Estrutura a casa agora. Posicionamento, identidade, presença digital clara. Atrai clientes que realmente querem comprar. Escala vendas recorrentes. Vira referência no seu mercado agro.</p>
+      </div>
+    </div>
+    <p>A Teovox Agro oferece exatamente isso — um sistema completo que coloca você em ordem e depois te mostra pro mundo certo.</p>
+    <p>Próximo passo: conversa com a gente. Um diagnóstico estratégico que já te dá clareza do que precisa mudar e por onde começar.</p>
+    <a href="#" class="btn" style="margin-top:12px;">Construir minha estratégia agora →</a>
+  </div>
+</section>
+
+<div class="cursor-glow" id="cursorGlow"></div>
+<div class="cursor-dot" id="cursorDot"></div>
+
+<footer>
+  <div class="wrap">
+    Teovox — Agência de Comunicação e Marketing Estratégico. Estratégia antes de qualquer ferramenta.
+  </div>
+</footer>
+
+<script>
+  var mouseX = 0, mouseY = 0;
+  var dotX = 0, dotY = 0;
+  var glowX = 0, glowY = 0;
+  var cursorDot = document.getElementById("cursorDot");
+  var cursorGlow = document.getElementById("cursorGlow");
+
+  window.addEventListener("mousemove", function(e){
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+  });
+
+  function raf(time){
+    dotX += (mouseX - dotX) * 0.35;
+    dotY += (mouseY - dotY) * 0.35;
+    glowX += (mouseX - glowX) * 0.12;
+    glowY += (mouseY - glowY) * 0.12;
+    cursorDot.style.transform = "translate(" + dotX + "px," + dotY + "px) translate(-50%,-50%)";
+    cursorGlow.style.transform = "translate(" + glowX + "px," + glowY + "px) translate(-50%,-50%)";
+
+    updateParallax();
+
+    requestAnimationFrame(raf);
+  }
+  requestAnimationFrame(raf);
+
+  var parallaxLayers = [
+    { section: document.querySelector(".hero"), bg: document.querySelector(".hero-bg") },
+    { section: document.querySelector(".cta-mid"), bg: document.querySelector(".cta-bg") },
+    { section: document.querySelector(".entregaveis"), bg: document.querySelector(".entregaveis-bg") }
+  ];
+  function updateParallax(){
+    parallaxLayers.forEach(function(layer){
+      var rect = layer.section.getBoundingClientRect();
+      var center = (rect.top + rect.height / 2) - window.innerHeight / 2;
+      var offset = center * 0.25;
+      layer.bg.style.transform = "translateY(" + offset + "px)";
+    });
+  }
+
+  var revealObserver = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add("reveal-in");
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.2 });
+
+  document.querySelectorAll(".pilares, .entrega-grid, .resultado-grid, .escolhas").forEach(function(grid){
+    var cards = grid.querySelectorAll(".reveal");
+    cards.forEach(function(card, i){
+      card.style.transitionDelay = (i * 0.1) + "s";
+      revealObserver.observe(card);
+    });
+  });
+
+  document.querySelectorAll(".plus-field").forEach(function(field){
+    var plusEls = field.querySelectorAll(".plus");
+    var section = field.parentElement;
+    section.addEventListener("mousemove", function(e){
+      var rect = field.getBoundingClientRect();
+      var relX = (e.clientX - rect.left) / rect.width - 0.5;
+      var relY = (e.clientY - rect.top) / rect.height - 0.5;
+      plusEls.forEach(function(el, i){
+        var strength = 40 + (i % 3) * 25;
+        el.style.transform = "translate(" + (relX * strength) + "px," + (relY * strength) + "px)";
+      });
+    });
+    section.addEventListener("mouseleave", function(){
+      plusEls.forEach(function(el){ el.style.transform = "translate(0,0)"; });
+    });
+  });
+</script>
+</body>
+</html>
